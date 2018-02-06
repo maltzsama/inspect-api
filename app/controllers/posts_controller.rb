@@ -1,8 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
   def index
-    @posts = Post.all
-    render json: @posts
+    puts "try show this #{params[:page]}"
+    puts "============="
+    if params[:page]
+      @posts = Post.paginate(page: params[:page], per_page: 10)
+      total_pages = (Post.count / 10).ceil
+      current_page = params[:page]
+    else
+      @posts = @posts = Post.paginate(page: 1, per_page: 10)
+      total_pages = (Post.count / 10).ceil
+      current_page = 1
+    end
+    render json: @posts, meta: PaginationHelper.pagination_meta(@posts)
   end
 
   # GET /tsts/1
