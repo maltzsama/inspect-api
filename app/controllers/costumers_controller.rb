@@ -3,12 +3,12 @@ class CostumersController < ApplicationController
 
   def index
     if params[:page]
-      @costumers = Costumers.paginate(page: params[:page], per_page: 10)
-      total_pages = (Costumers.count / 10).ceil
+      @costumers = Costumer.paginate(page: params[:page], per_page: 10)
+      total_pages = (Costumer.count / 10).ceil
       current_page = params[:page]
     else
-      @costumers = Costumers.paginate(page: 1, per_page: 10)
-      total_pages = (Costumers.count / 10).ceil
+      @costumers = Costumer.paginate(page: 1, per_page: 10)
+      total_pages = (Costumer.count / 10).ceil
       current_page = 1
     end
     render json: @costumers, meta: PaginationHelper.pagination_meta(@costumers)
