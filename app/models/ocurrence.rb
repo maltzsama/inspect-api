@@ -1,2 +1,0 @@
-class Ocurrence < ApplicationRecord
-end

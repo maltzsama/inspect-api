@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :ocurrences
+  resources :occurrences
   resources :posts
   resources :costumers
   resources :places

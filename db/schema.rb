@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180207015814) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ocurrences", force: :cascade do |t|
+  create_table "occurrences", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
