@@ -18,13 +18,9 @@ class CostumersController < ApplicationController
     render json: @costumer
   end
 
-  # POST /tsts
+  # POST /costumers/
   def create
     @costumer = Costumer.new(costumer_params)
-    puts @costumer
-    puts "======================="
-    puts costumer_params
-    puts "======================="
     if @costumer.save
       render json: @costumer, status: :created, location: @costumer
     else
@@ -32,7 +28,7 @@ class CostumersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tsts/1
+  # PATCH/PUT /costumers/1
   def update
     if @costumer.update(costumer_params)
       render json: @costumer
@@ -41,7 +37,7 @@ class CostumersController < ApplicationController
     end
   end
 
-  # DELETE /tsts/1
+  # DELETE /costumers/1
   def destroy
     @costumer.destroy
   end
