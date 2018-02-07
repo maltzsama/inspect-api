@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :costumers
   resources :places
   resources :inspections
+  resources :solutions
 end
