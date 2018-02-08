@@ -1,3 +1,3 @@
 class OccurrenceSerializer < ActiveModel::Serializer
-  attributes :id, :description
+  attributes :id, :description, :picture
 end

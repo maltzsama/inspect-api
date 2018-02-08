@@ -45,3 +45,8 @@ gem 'active_model_serializers'
 #pagination
 gem 'will_paginate'
 gem 'api-pagination'
+
+#attached file
+gem 'carrierwave'
+gem 'carrierwave-base64'
+gem "mini_magick"
