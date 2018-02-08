@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :places
   resources :inspections
   resources :solutions
+  post 'auth', to: 'authentication#authenticate'
 end
