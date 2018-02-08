@@ -20,9 +20,6 @@ class OccurrencesController < ApplicationController
   end
 
   def create
-    puts params
-    puts "$$$$$$$$$$$$$"
-
     @occurrence = Occurrence.new(occurrence_params)
     if @occurrence.save
       render json: @occurrence, status: :created, location: @occurrence

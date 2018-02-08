@@ -47,6 +47,6 @@ class SolutionsController < ApplicationController
   end
 
   def solution_params
-    params.require(:solution).permit(:description)
+    params.require(:solution).permit(:description, :picture)
   end
 end
