@@ -41,12 +41,11 @@ class SolutionsController < ApplicationController
   end
 
   private
-
   def set_solution
     @solution = Solution.find(params[:id])
   end
 
   def solution_params
-    params.require(:solution).permit(:description, :picture)
+    params.require(:solution).permit(:description, :picture, :occurrence_id)
   end
 end

@@ -21,6 +21,7 @@ class OccurrencesController < ApplicationController
 
   def create
     @occurrence = Occurrence.new(occurrence_params)
+    @occurrence.user_id = current_user.id
     if @occurrence.save
       render json: @occurrence, status: :created, location: @occurrence
     else
@@ -41,11 +42,11 @@ class OccurrencesController < ApplicationController
   end
 
   private
-  def set_ocurence
+  def set_occurence
     @occurrence = Occurrence.find(params[:id])
   end
   
   def occurrence_params
-    params.require(:occurrence).permit(:description, :picture)
+    params.require(:occurrence).permit(:description, :picture, :deadline_id, :problem_id, :severity_id, :inspection_id, :solution)
   end
 end

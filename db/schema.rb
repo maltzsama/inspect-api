@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208193612) do
+ActiveRecord::Schema.define(version: 20180209082003) do
 
   create_table "costumers", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20180208193612) do
     t.string "fone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_costumers_on_user_id"
   end
 
   create_table "deadlines", force: :cascade do |t|
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 20180208193612) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "place_id"
+    t.index ["place_id"], name: "index_inspections_on_place_id"
   end
 
   create_table "occurrences", force: :cascade do |t|
@@ -41,6 +45,16 @@ ActiveRecord::Schema.define(version: 20180208193612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.integer "deadline_id"
+    t.integer "problem_id"
+    t.integer "severity_id"
+    t.integer "inspection_id"
+    t.integer "user_id"
+    t.index ["deadline_id"], name: "index_occurrences_on_deadline_id"
+    t.index ["inspection_id"], name: "index_occurrences_on_inspection_id"
+    t.index ["problem_id"], name: "index_occurrences_on_problem_id"
+    t.index ["severity_id"], name: "index_occurrences_on_severity_id"
+    t.index ["user_id"], name: "index_occurrences_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -49,6 +63,8 @@ ActiveRecord::Schema.define(version: 20180208193612) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "costumer_id"
+    t.index ["costumer_id"], name: "index_places_on_costumer_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -77,6 +93,8 @@ ActiveRecord::Schema.define(version: 20180208193612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.integer "occurrence_id"
+    t.index ["occurrence_id"], name: "index_solutions_on_occurrence_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

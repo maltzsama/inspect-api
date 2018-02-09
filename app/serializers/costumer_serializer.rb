@@ -1,3 +1,3 @@
 class CostumerSerializer < ActiveModel::Serializer
-  attributes :id, :name, :cnpj, :address, :contact, :fone
+  attributes :id, :name, :cnpj, :address, :contact, :fone, :user_id
 end
