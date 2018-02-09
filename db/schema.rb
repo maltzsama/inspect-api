@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208193612) do
+ActiveRecord::Schema.define(version: 20180209054246) do
 
   create_table "costumers", force: :cascade do |t|
     t.string "name"
@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 20180208193612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.integer "occurrence_id"
+    t.index ["occurrence_id"], name: "index_solutions_on_occurrence_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

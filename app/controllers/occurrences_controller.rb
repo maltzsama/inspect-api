@@ -41,11 +41,11 @@ class OccurrencesController < ApplicationController
   end
 
   private
-  def set_ocurence
+  def set_occurence
     @occurrence = Occurrence.find(params[:id])
   end
   
   def occurrence_params
-    params.require(:occurrence).permit(:description, :picture)
+    params.require(:occurrence).permit(:description, :picture, :solution)
   end
 end
