@@ -5,6 +5,7 @@ class Occurrence < ApplicationRecord
   belongs_to :severity
   belongs_to :inspection
   
+  belongs_to :user
   mount_base64_uploader :picture, PictureUploader
   
   def has_solution?
