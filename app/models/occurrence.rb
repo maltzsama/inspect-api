@@ -3,6 +3,8 @@ class Occurrence < ApplicationRecord
   belongs_to :deadline
   belongs_to :problem
   belongs_to :severity
+  belongs_to :inspection
+  
   mount_base64_uploader :picture, PictureUploader
   
   def has_solution?
