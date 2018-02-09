@@ -8,8 +8,7 @@ class Occurrence < ApplicationRecord
 
   mount_base64_uploader :picture, PictureUploader
   
-  def has_solution?
-    self.solution ? true : false
+  def solution?
+    solution ? true : false
   end
-
 end

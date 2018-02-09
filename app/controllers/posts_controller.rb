@@ -1,16 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :update, :destroy]
+  before_action :set_post, only: %i[:show, :update, :destroy]
   
   def index
-    if params[:page]
-      @posts = Post.paginate(page: params[:page], per_page: 10)
-      total_pages = (Post.count / 10).ceil
-      current_page = params[:page]
-    else
-      @posts = Post.paginate(page: 1, per_page: 10)
-      total_pages = (Post.count / 10).ceil
-      current_page = 1
-    end
+    page = params[:page] || 1
+    @posts = Post.paginate(page: page, per_page: 10)
     render json: @posts, meta: PaginationHelper.pagination_meta(@posts)
   end
 
@@ -46,12 +39,12 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 end
