@@ -2,15 +2,8 @@ class InspectionsController < ApplicationController
   before_action :set_inspection, only: [:show, :update, :destroy]
 
   def index
-    if params[:page]
-      @inspections = Inspection.paginate(page: params[:page], per_page: 10)
-      total_pages = (Inspection.count / 10).ceil
-      current_page = params[:page]
-    else
-      @inspections = Inspection.paginate(page: 1, per_page: 10)
-      total_pages = (Inspection.count / 10).ceil
-      current_page = 1
-    end
+    page = params[:page] || 1
+    @inspections = Inspection.paginate(page: page, per_page: 10)
     render json: @inspections, meta: PaginationHelper.pagination_meta(@inspections)
   end
 

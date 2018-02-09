@@ -2,15 +2,8 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :update, :destroy]
 
   def index
-    if params[:page]
-      @places = Place.paginate(page: params[:page], per_page: 10)
-      total_pages = (Place.count / 10).ceil
-      current_page = params[:page]
-    else
-      @places = Place.paginate(page: 1, per_page: 10)
-      total_pages = (Place.count / 10).ceil
-      current_page = 1
-    end
+    page = params[:page] || 1
+    @places = Place.paginate(page: page, per_page: 10)
     render json: @places, meta: PaginationHelper.pagination_meta(@places)
   end
 

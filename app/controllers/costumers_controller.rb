@@ -2,15 +2,8 @@ class CostumersController < ApplicationController
   before_action :set_costumer, only: [:show, :update, :destroy]
 
   def index
-    if params[:page]
-      @costumers = Costumer.paginate(page: params[:page], per_page: 10)
-      total_pages = (Costumer.count / 10).ceil
-      current_page = params[:page]
-    else
-      @costumers = Costumer.paginate(page: 1, per_page: 10)
-      total_pages = (Costumer.count / 10).ceil
-      current_page = 1
-    end
+    page = params[:page] || 1
+    @costumers = Costumer.paginate(page: page, per_page: 10)
     render json: @costumers, meta: PaginationHelper.pagination_meta(@costumers)
   end
 
