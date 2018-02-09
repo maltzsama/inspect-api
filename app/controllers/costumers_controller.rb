@@ -1,5 +1,5 @@
 class CostumersController < ApplicationController
-  before_action :set_costumer, only: [:show, :update, :destroy]
+  before_action :set_costumer, only: %i[:show, :update, :destroy]
 
   def index
     page = params[:page] || 1
@@ -37,13 +37,13 @@ class CostumersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_costumer
-      @costumer = Costumer.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_costumer
+    @costumer = Costumer.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def costumer_params
-      params.require(:costumer).permit(:name, :cnpj, :address, :contact, :fone)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def costumer_params
+    params.require(:costumer).permit(:name, :cnpj, :address, :contact, :fone)
+  end
 end

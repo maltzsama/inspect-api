@@ -1,5 +1,5 @@
 class InspectionsController < ApplicationController
-  before_action :set_inspection, only: [:show, :update, :destroy]
+  before_action :set_inspection, only: %i[:show, :update, :destroy]
 
   def index
     page = params[:page] || 1

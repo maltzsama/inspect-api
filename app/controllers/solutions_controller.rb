@@ -1,5 +1,5 @@
 class SolutionsController < ApplicationController
-  before_action :set_solution, only: [:show, :update, :destroy]
+  before_action :set_solution, only: %i[:show, :update, :destroy]
 
   def index
     page = params[:page] || 1

@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show, :update, :destroy]
+  before_action :set_place, only: %i[:show, :update, :destroy]
 
   def index
     page = params[:page] || 1
