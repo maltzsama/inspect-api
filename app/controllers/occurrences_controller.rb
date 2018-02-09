@@ -1,17 +1,9 @@
 class OccurrencesController < ApplicationController
-  before_action :set_occurence, only: [:show, :update, :destroy]
+  before_action :set_occurence, only: %i[:show, :update, :destroy]
 
   def index
-    if params[:page]
-      @occurrences = Occurrence.paginate(page: params[:page], per_page: 10)
-      total_pages = (Occurrence.count / 10).ceil
-      current_page = params[:page]
-    else
-      page = 1
-      @occurrences = Occurrence.paginate(page: 1, per_page: 10)
-      total_pages = (Occurrence.count / 10).ceil
-      current_page = page
-    end
+    page = params[:page] || 1
+    @occurrences = Occurrence.paginate(page: page, per_page: 10)
     render json: @occurrences, meta: PaginationHelper.pagination_meta(@occurrences)
   end
 

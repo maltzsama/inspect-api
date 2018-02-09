@@ -1,16 +1,9 @@
 class CostumersController < ApplicationController
-  before_action :set_costumer, only: [:show, :update, :destroy]
+  before_action :set_costumer, only: %i[:show, :update, :destroy]
 
   def index
-    if params[:page]
-      @costumers = Costumer.paginate(page: params[:page], per_page: 10)
-      total_pages = (Costumer.count / 10).ceil
-      current_page = params[:page]
-    else
-      @costumers = Costumer.paginate(page: 1, per_page: 10)
-      total_pages = (Costumer.count / 10).ceil
-      current_page = 1
-    end
+    page = params[:page] || 1
+    @costumers = Costumer.paginate(page: page, per_page: 10)
     render json: @costumers, meta: PaginationHelper.pagination_meta(@costumers)
   end
 
@@ -21,7 +14,7 @@ class CostumersController < ApplicationController
   # POST /costumers/
   def create
     @costumer = Costumer.new(costumer_params)
-    @costumer = current_user.id
+    @costumer.user_id = current_user.id
     if @costumer.save
       render json: @costumer, status: :created, location: @costumer
     else
@@ -44,13 +37,13 @@ class CostumersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_costumer
-      @costumer = Costumer.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_costumer
+    @costumer = Costumer.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def costumer_params
-      params.require(:costumer).permit(:name, :cnpj, :address, :contact, :fone)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def costumer_params
+    params.require(:costumer).permit(:name, :cnpj, :address, :contact, :fone)
+  end
 end

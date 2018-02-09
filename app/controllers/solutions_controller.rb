@@ -1,17 +1,9 @@
 class SolutionsController < ApplicationController
-  before_action :set_solution, only: [:show, :update, :destroy]
+  before_action :set_solution, only: %i[:show, :update, :destroy]
 
   def index
-    if params[:page]
-      @solutions = Solution.paginate(page: params[:page], per_page: 10)
-      total_pages = (Solution.count / 10).ceil
-      current_page = params[:page]
-    else
-      page = 1
-      @solutions = Solution.paginate(page: 1, per_page: 10)
-      total_pages = (Solution.count / 10).ceil
-      current_page = page
-    end
+    page = params[:page] || 1
+    @solutions = Solution.paginate(page: page, per_page: 10)
     render json: @solutions, meta: PaginationHelper.pagination_meta(@solutions)
   end
 

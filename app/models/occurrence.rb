@@ -6,10 +6,13 @@ class Occurrence < ApplicationRecord
   belongs_to :inspection
   belongs_to :user
 
+  validates :description, presence: true
+  validates :description, length: { in: 15..500, within: 'minimun 15 and maximum 500 allowed'}
+
+
   mount_base64_uploader :picture, PictureUploader
   
-  def has_solution?
-    self.solution ? true : false
+  def solution?
+    solution ? true : false
   end
-
 end
