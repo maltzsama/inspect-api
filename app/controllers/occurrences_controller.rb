@@ -46,6 +46,6 @@ class OccurrencesController < ApplicationController
   end
   
   def occurrence_params
-    params.require(:occurrence).permit(:description, :picture, :solution)
+    params.require(:occurrence).permit(:description, :picture, :deadline_id,:solution)
   end
 end
