@@ -10,7 +10,8 @@ class User::PasswordController < ApplicationController
     if user.present?
       user.generate_password_token!
       # SEND EMAIL HERE
-      UserNotifyMailer.forgot_passwd(user).deliver_now
+      # UserNotifyMailer.forgot_passwd(user).deliver_now
+      SendMailJob.set(wait: 20.seconds).perform_later(user)
       render json: {status: 'ok'}, status: :ok
     else
       render json: {error: ['Email address not found. Please check and try again.']}, status: :not_found
