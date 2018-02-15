@@ -62,3 +62,6 @@ gem 'mini_magick', '~> 4.8'
 gem 'jwt', '~> 2.1.0'
 
 gem 'simple_command', '~> 0.0.9'
+
+# Asynchronous processing library for Ruby
+gem 'sucker_punch', '~> 2.0'
