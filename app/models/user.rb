@@ -18,7 +18,6 @@ class User < ApplicationRecord
   def generate_password_token!
     self.password = generate_passwd
     self.save!
-    SendMailJob.set(wait: 20.seconds).perform_now(self)
   end
 
   private 

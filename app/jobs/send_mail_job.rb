@@ -1,8 +1,8 @@
 class SendMailJob < ApplicationJob
+  include SuckerPunch::Job
   queue_as :default
 
   def perform(user)
-    # @user = user
-    UserNotifyMailer.forgot_passwd(user).deliver_now
+    UserNotifyMailer.forgot_passwd(user).deliver
   end
 end

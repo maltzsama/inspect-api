@@ -9,7 +9,7 @@ class User::PasswordController < ApplicationController
     
     if user.present?
       user.generate_password_token!
-      SendMailJob.set(wait: 5.seconds).perform_now(user)
+      SendMailJob.perform_async(user)
       render json: {status: 'ok'}, status: :ok
     else
       render json: {error: ['Email address not found. Please check and try again.']}, status: :not_found
