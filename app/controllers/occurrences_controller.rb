@@ -1,5 +1,5 @@
 class OccurrencesController < ApplicationController
-  before_action :set_occurence, only: %i[:show, :update, :destroy]
+  before_action :set_occurence, only: [:show, :update, :destroy]
 
   def index
     page = params[:page] || 1
