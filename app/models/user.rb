@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   before_save :downcase_email
 
-  has_secure_password
+  # has_secure_password
   validates :name, presence: true
   validates :email, uniqueness: true, case_sensitive: false
   validates_format_of :email, with: /@/

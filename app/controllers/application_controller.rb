@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  before_action :authenticate_user!
+  
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
   attr_reader :current_user
