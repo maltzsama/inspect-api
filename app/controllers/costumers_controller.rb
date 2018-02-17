@@ -16,7 +16,7 @@ class CostumersController < ApplicationController
   # POST /costumers/
   def create
     @costumer = Costumer.new(costumer_params)
-    @costumer.user_id = current_user.id
+    @costumer.user_id = 2 #current_user.id
     if @costumer.save
       render json: @costumer, status: :created, location: @costumer
     else
