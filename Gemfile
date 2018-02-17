@@ -61,3 +61,10 @@ gem 'mini_magick', '~> 4.8'
 # Asynchronous processing library for Ruby
 gem 'sucker_punch', '~> 2.0'
 
+# Auth devise
+gem 'devise', '~> 4.0'
+
+# Auth token
+gem 'tiddle', '~> 1.0.2'
+
+
