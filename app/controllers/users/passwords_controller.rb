@@ -1,5 +1,4 @@
-class Session::PasswordsController < Devise::PasswordsController
-  respond_to :json
+class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   # def new
   #   super
