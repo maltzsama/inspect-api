@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, defaults: { format: :json }, 
     controllers: { sessions: 'users/sessions',
-                registration: 'users/registrations' }
+                registrations: 'users/registrations' }
   root to: 'occurrences#index', defaults: { format: :json }
   resources :occurrences, defaults: { format: :json }
   resources :costumers, defaults: { format: :json }
