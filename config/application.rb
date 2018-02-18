@@ -30,5 +30,6 @@ module InspecApp
     # Skip views, helpers and assets when generating a new resource.
     config.autoload_paths << Rails.root.join('lib')
     config.api_only = true
+    config.middleware.delete ActionDispatch::Session::CookieStore
   end
 end

@@ -1,5 +1,7 @@
 class CostumersController < ApplicationController
-  before_action :set_costumer, only: %i[:show, :update, :destroy]
+  before_action :set_costumer, only: [:show, :update, :destroy]
+  # before_action :set_post, only: [:show, :update, :destroy]
+
 
   def index
     page = params[:page] || 1

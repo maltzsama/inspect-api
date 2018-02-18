@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: %i[:show, :update, :destroy]
+  before_action :set_place, only: [:show, :update, :destroy]
 
   def index
     page = params[:page] || 1
@@ -38,7 +38,7 @@ class PlacesController < ApplicationController
   
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_costumer
+  def set_place
     @place = Place.find(params[:id])
   end
 
