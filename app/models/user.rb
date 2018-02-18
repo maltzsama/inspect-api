@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable
+         :token_authenticatable, :confirmable
+
   before_save :downcase_email
 
   # has_secure_password
@@ -20,19 +21,14 @@ class User < ApplicationRecord
   has_many :costumers
   has_many :authentication_tokens
   mount_base64_uploader :picture, PictureUploader
-  
-  def generate_password_token!
-    self.password = generate_passwd
-    self.save!
-  end
 
   private 
   def downcase_email
     self.email = self.email.delete(' ').downcase
   end
-  
-  def generate_passwd
-    SecureRandom.base64(12)
+
+  def send_devise_notification(notification, *args)
+    SendMailJob.perform_async(self, notification)
   end
 
 end
