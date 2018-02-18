@@ -1,0 +1,8 @@
+<h1>Hello <%= @user.name %></h1>
+  <p>
+    This is your new password to sign up at Inspect.<br>
+    your login is: <%= @user.email %>.<br>
+    your token is: <%= @user.confirmation_token %>
+    <%= "#{user_confirmation_url}?confirmation_token=#{(@user.confirmation_token)}"%>
+  </p>
+<p>Thanks and have a great day!</p>

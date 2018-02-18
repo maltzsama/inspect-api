@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :occurrences
-  resources :costumers
-  resources :places
-  resources :inspections
-  resources :solutions
-  
-  namespace :user do
-    post 'auth', to: 'authentication#authenticate'
-    post 'sign_up', to: 'register#sign_up'
-    post 'forgot_passwd', to: 'password#forgot_passwd'
-  end
+
+  devise_for :users, defaults: { format: :json }, 
+    controllers: { sessions: 'users/sessions',
+              registrations: 'users/registrations',
+              confirmations: 'users/confirmations' }
+  root to: 'occurrences#index', defaults: { format: :json }
+  resources :occurrences, defaults: { format: :json }
+  resources :costumers, defaults: { format: :json }
+  resources :places, defaults: { format: :json }
+  resources :inspections, defaults: { format: :json }
+  resources :solutions, defaults: { format: :json }
+
 end

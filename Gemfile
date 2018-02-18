@@ -58,10 +58,15 @@ gem 'carrierwave', '~> 1.2'
 gem 'carrierwave-base64', '~> 2.6'
 gem 'mini_magick', '~> 4.8'
 
-# auth with jwt
-gem 'jwt', '~> 2.1.0'
-
-gem 'simple_command', '~> 0.0.9'
-
 # Asynchronous processing library for Ruby
 gem 'sucker_punch', '~> 2.0'
+
+# Auth devise
+gem 'devise', '~> 4.0'
+
+# Auth token
+gem 'tiddle', '~> 1.0.2'
+
+# soft delete
+gem "paranoia", "~> 2.2"
+
