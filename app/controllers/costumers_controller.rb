@@ -1,5 +1,4 @@
 class CostumersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_costumer, only: [:show, :update, :destroy]
   # before_action :set_post, only: [:show, :update, :destroy]
 
@@ -17,7 +16,7 @@ class CostumersController < ApplicationController
   # POST /costumers/
   def create
     @costumer = Costumer.new(costumer_params)
-    @costumer.user_id = 2 #current_user.id
+    @costumer.user_id = current_user.id
     if @costumer.save
       render json: @costumer, status: :created, location: @costumer
     else

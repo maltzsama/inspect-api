@@ -23,9 +23,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    if current_user.destroy
+      render json: {destroyed: current_user}, status: :ok
+    else
+      render json: {errors: current_user.errors}, status: :unprocessable_entity
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

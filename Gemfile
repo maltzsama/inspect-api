@@ -67,4 +67,6 @@ gem 'devise', '~> 4.0'
 # Auth token
 gem 'tiddle', '~> 1.0.2'
 
+# soft delete
+gem "paranoia", "~> 2.2"
 

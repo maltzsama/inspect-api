@@ -13,7 +13,7 @@ class OccurrencesController < ApplicationController
 
   def create
     @occurrence = Occurrence.new(occurrence_params)
-    @occurrence.user_id = 2 #current_user.id
+    @occurrence.user_id = current_user.id
     if @occurrence.save
       render json: @occurrence, status: :created, location: @occurrence
     else

@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
 
   def create
+    # super
     user = warden.authenticate!(auth_options)
     token = Tiddle.create_and_return_token(user, request)
     render json: { authentication_token: token }
